@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Code Fixer – PyBuddy</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 AI Code Fix Simulator</h1>
+    <p>Paste your Python code below. PyBuddy will try to catch errors (offline demo).</p>
+
+    <textarea id="codeInput" rows="10" style="width:100%; font-family:monospace; font-size:1rem;"></textarea>
+    <button onclick="fixCode()" class="buy-button" style="margin-top: 1rem;">Fix My Code</button>
+
+    <div id="result" style="margin-top: 2rem; background:#1a1a1a; padding:1rem; border-radius:8px;"></div>
+
+    <p style="margin-top: 2rem;"><a href="course.html" class="outline-btn">📘 Back to Course</a></p>
+  </div>
+
+  <script>
+    function fixCode() {
+      const code = document.getElementById("codeInput").value;
+      let result = "";
+
+      if (code.includes("print") === false) {
+        result += "🔧 Missing a print() statement?<br>";
+      }
+      if (code.includes("if") && !code.includes(":")) {
+        result += "⚠️ You might be missing a ':' in your if statement.<br>";
+      }
+      if (code.includes("for") && !code.includes(":")) {
+        result += "⚠️ Are you missing a ':' in your loop?<br>";
+      }
+      if (code.includes("=") && !code.includes("==") && code.includes("if")) {
+        result += "⚠️ Use '==' for comparison in if statements, not '='.<br>";
+      }
+
+      if (result === "") {
+        result = "✅ No common errors found. Looks good!";
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

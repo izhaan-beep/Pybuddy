@@ -1,11 +1,17 @@
-console.log("PyBuddy loaded successfully!");
+console.log("PyBuddy script loaded!");
 
-// In future: You can connect this to an AI backend to auto-fix Python errors.
 document.addEventListener("DOMContentLoaded", () => {
-  const buyBtn = document.querySelector(".buy-button");
-  if (buyBtn) {
-    buyBtn.addEventListener("click", () => {
-      alert("Coming soon: AI Python course purchase via ₹69");
+  const buyButton = document.querySelector(".buy-button");
+  if (buyButton && buyButton.innerText.includes("Unlock")) {
+    buyButton.addEventListener("click", () => {
+      alert("Redirecting to UPI payment...");
+    });
+  }
+
+  const fixerButton = document.querySelector("#fixBtn");
+  if (fixerButton) {
+    fixerButton.addEventListener("click", () => {
+      alert("Trying to fix your code...");
     });
   }
 });
